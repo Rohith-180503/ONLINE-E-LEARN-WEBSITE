@@ -1,350 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Online Learning Platform – Complete Technical Documentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Learning Website - Explanation</title>
   <style>
-    :root {
-      --primary: #0d6efd;
-      --secondary: #6610f2;
-      --dark: #212529;
-      --light: #f8f9fa;
-      --gray: #6c757d;
-      --border: #dee2e6;
-      --code-bg: #f4f6f8;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-      line-height: 1.75;
-      background: #ffffff;
-      color: var(--dark);
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      margin-bottom: 0.7rem;
-      font-size: 2.8rem;
-    }
-
-    header p {
-      max-width: 1000px;
-      margin: auto;
-      font-size: 1.15rem;
-      opacity: 0.95;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: auto;
-      padding: 2.5rem 1.2rem;
-    }
-
-    section {
-      margin-bottom: 4rem;
-    }
-
-    h2 {
-      border-left: 6px solid var(--primary);
-      padding-left: 0.8rem;
-      margin-bottom: 1.2rem;
-      font-size: 2rem;
-    }
-
-    h3 {
-      margin-top: 2rem;
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
-
-    h4 {
-      margin-top: 1.5rem;
-      font-size: 1.15rem;
-      color: var(--secondary);
-    }
-
-    p {
-      margin-bottom: 1rem;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
       color: #333;
+      padding: 20px;
     }
-
-    ul, ol {
-      padding-left: 1.8rem;
+    h1, h2, h3 {
+      color: #2c3e50;
     }
-
-    li {
-      margin-bottom: 0.6rem;
-    }
-
     pre {
-      background: var(--code-bg);
-      border-left: 5px solid var(--primary);
-      padding: 1.2rem;
+      background-color: #2d2d2d;
+      color: #f8f8f2;
+      padding: 10px;
       overflow-x: auto;
-      font-size: 0.9rem;
-      margin: 1.5rem 0;
+      border-radius: 6px;
     }
-
     code {
-      color: #b02a37;
-      font-family: Consolas, monospace;
+      font-family: 'Courier New', monospace;
+      color: #e74c3c;
     }
-
-    .box {
-      background: var(--light);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
+    section {
+      margin-bottom: 40px;
     }
-
-    .note {
-      background: #fff3cd;
-      border-left: 6px solid #ffc107;
-      padding: 1rem;
-      margin: 1.5rem 0;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      background: #f1f1f1;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.95rem;
-      color: var(--gray);
+    ul {
+      margin-left: 20px;
     }
   </style>
 </head>
-
 <body>
+  <h1>Online Learning Website - Full Code Explanation</h1>
 
-<header>
-  <h1>🎓 Online Learning Platform</h1>
-  <p>
-    A fully documented, production-style React application built using Redux Toolkit.
-    This document explains the architecture, design decisions, data flow, and scalability
-    considerations in extreme detail.
-  </p>
-</header>
+  <section>
+    <h2>1. index.html</h2>
+    <p>This is the main HTML file that loads the React application. It contains:</p>
+    <ul>
+      <li><code>&lt;div id="root"&gt;&lt;/div&gt;</code>: This is the root element where React will render the application using <code>ReactDOM.createRoot</code>.</li>
+      <li><code>&lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;</code>: Loads the main React entry file.</li>
+      <li>Meta tags for charset, viewport, and page title.</li>
+    </ul>
+    <pre>
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;link rel="icon" type="image/svg+xml" href="/vite.svg" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;online-learning-website&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id="root"&gt;&lt;/div&gt;
+    &lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+  </section>
 
-<main>
+  <section>
+    <h2>2. fakeData.js</h2>
+    <p>This file contains all the course data used in the app. Each course is represented as an object with:</p>
+    <ul>
+      <li><code>id</code>: Unique identifier for the course.</li>
+      <li><code>title</code>: Name of the course.</li>
+      <li><code>instructor</code>: Instructor's name.</li>
+      <li><code>price</code>: Cost of the course.</li>
+      <li><code>img</code>: URL for the course image/logo.</li>
+    </ul>
+    <p>The data is exported as default so it can be imported anywhere in the React project.</p>
+    <pre>
+const fakeData = [
+  { id: 1, title: "Complete Linux Training", instructor: "Jason Cannon", price: 49.99, img: "https://raw.githubusercontent.com/marwin1991/profile-technology-icons/main/icons/linux.png" },
+  { id: 2, title: "Modern JavaScript from Scratch", instructor: "Jonas Schmedtmann", price: 39.99, img: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  ...
+];
 
-<!-- OVERVIEW -->
-<section>
-  <h2>📖 Project Overview</h2>
-  <p>
-    The Online Learning Platform is a frontend application that simulates a real-world
-    e-learning system. Users can browse available courses, enroll in them, manage a cart,
-    search for specific courses, and complete a checkout flow.
-  </p>
+export default fakeData;
+    </pre>
+  </section>
 
-  <p>
-    The core objective of this project is not just functionality, but to demonstrate
-    <strong>clean architecture, maintainability, scalability, and professional React patterns</strong>.
-  </p>
+  <section>
+    <h2>3. Course.jsx</h2>
+    <p>This React component represents a single course card. Concepts used:</p>
+    <ul>
+      <li><code>props</code>: <code>course</code>, <code>addToCart</code>, <code>cart</code> are passed from parent.</li>
+      <li><code>Destructuring</code>: Extracts <code>title</code>, <code>instructor</code>, <code>price</code>, <code>img</code> from <code>course</code>.</li>
+      <li><code>isEnrolled</code>: Checks if this course is already in the cart.</li>
+      <li><code>button disabled={isEnrolled}</code>: Prevents adding duplicate courses.</li>
+    </ul>
+    <pre>
+const Course = ({ course, addToCart, cart }) =&gt; {
+  const { title, instructor, price, img } = course;
+  const isEnrolled = cart.some(item =&gt; item.id === course.id);
 
-  <div class="note">
-    This project was intentionally designed as if it were part of a larger production system,
-    making it suitable for interviews, portfolio evaluation, and real-world extension.
-  </div>
-</section>
+  return (
+    &lt;div className="course-card"&gt;
+      &lt;img src={img} alt={title} /&gt;
+      &lt;h3&gt;{title}&lt;/h3&gt;
+      &lt;p&gt;Instructor: {instructor}&lt;/p&gt;
+      &lt;p&gt;${price}&lt;/p&gt;
+      &lt;button onClick={() =&gt; addToCart(course)} disabled={isEnrolled}&gt;
+        {isEnrolled ? "Enrolled" : "Enroll"}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
 
-<!-- PROBLEM STATEMENT -->
-<section>
-  <h2>❓ Problem Statement</h2>
-  <p>
-    Many beginner React projects focus only on UI rendering and ignore application structure.
-    This project addresses that gap by solving the following problems:
-  </p>
+export default Course;
+    </pre>
+  </section>
 
-  <ul>
-    <li>Managing shared state without prop drilling</li>
-    <li>Preventing duplicate actions (duplicate enrollments)</li>
-    <li>Persisting data across page reloads</li>
-    <li>Keeping business logic separate from UI</li>
-    <li>Designing a scalable folder structure</li>
-  </ul>
-</section>
+  <section>
+    <h2>4. Cart.jsx</h2>
+    <p>This component displays the cart panel. Concepts:</p>
+    <ul>
+      <li>Calculate total with <code>reduce()</code>.</li>
+      <li>Map through <code>cart</code> array to display each enrolled course.</li>
+      <li><code>removeFromCart</code> function removes a course by ID.</li>
+      <li>Dynamic total and enrolled course count displayed.</li>
+    </ul>
+    <pre>
+const Cart = ({ cart, removeFromCart }) =&gt; {
+  const total = cart.reduce((sum, course) =&gt; sum + course.price, 0);
 
-<!-- FEATURES -->
-<section>
-  <h2>✨ Feature Breakdown</h2>
+  return (
+    &lt;div className="cart-panel"&gt;
+      &lt;h2&gt;CART&lt;/h2&gt;
+      &lt;hr /&gt;
+      &lt;h5&gt;Enrolled Courses: {cart.length}&lt;/h5&gt;
 
-  <h3>Course Management</h3>
-  <ul>
-    <li>Display courses with title, instructor, image, and price</li>
-    <li>Reusable Course Card component</li>
-    <li>Disable enroll button once enrolled</li>
-  </ul>
+      {cart.map(course =&gt; (
+        &lt;div key={course.id} className="course-item"&gt;
+          &lt;span&gt;{course.title}&lt;/span&gt;
+          &lt;span&gt;
+            ${course.price}
+            &lt;button onClick={() =&gt; removeFromCart(course.id)} style={{ marginLeft: "8px" }}&gt;❌&lt;/button&gt;
+          &lt;/span&gt;
+        &lt;/div&gt;
+      ))}
 
-  <h3>Cart System</h3>
-  <ul>
-    <li>Add courses to cart</li>
-    <li>Remove courses from cart</li>
-    <li>Automatic total price calculation</li>
-    <li>Persistent cart using localStorage</li>
-  </ul>
+      &lt;hr /&gt;
+      &lt;h5&gt;Total: ${total.toFixed(2)}&lt;/h5&gt;
+    &lt;/div&gt;
+  );
+};
 
-  <h3>Search & UX</h3>
-  <ul>
-    <li>Real-time course search</li>
-    <li>Case-insensitive filtering</li>
-    <li>Instant UI updates without refresh</li>
-  </ul>
-</section>
+export default Cart;
+    </pre>
+  </section>
 
-<!-- TECH STACK -->
-<section>
-  <h2>🛠 Technology Stack (Explained)</h2>
+  <section>
+    <h2>5. CourseInfo.jsx</h2>
+    <p>This component combines <code>Course</code> and <code>Cart</code>. Concepts:</p>
+    <ul>
+      <li><code>useState</code>: Manages the cart array.</li>
+      <li><code>addToCart</code> and <code>removeFromCart</code>: Update state immutably.</li>
+      <li>Passes <code>props</code> to child components.</li>
+      <li>Flex layout using CSS classes for cart (left) and courses (right).</li>
+    </ul>
+    <pre>
+import { useState } from "react";
+import fakeData from "../../fakeData/fakeData";
+import Course from "../Course/Course";
+import Cart from "../Cart/Cart";
 
-  <h3>React</h3>
-  <p>
-    React is used for building component-based UI. Functional components and hooks
-    ensure concise, readable, and modern React code.
-  </p>
+const CourseInfo = () =&gt; {
+  const [cart, setCart] = useState([]);
 
-  <h3>Redux Toolkit</h3>
-  <p>
-    Redux Toolkit is used for global state management. It simplifies Redux logic by
-    reducing boilerplate and enforcing best practices.
-  </p>
+  const addToCart = (course) =&gt; {
+    if (!cart.find(item =&gt; item.id === course.id)) setCart([...cart, course]);
+  };
 
-  <h3>Bootstrap & CSS</h3>
-  <p>
-    Bootstrap provides responsive layout utilities, while custom CSS handles
-    component-level styling for better control.
-  </p>
-</section>
+  const removeFromCart = (id) =&gt; setCart(cart.filter(item =&gt; item.id !== id));
 
-<!-- ARCHITECTURE -->
-<section>
-  <h2>🏗 Application Architecture</h2>
-  <p>
-    The project follows a <strong>feature-based architecture</strong>, where related
-    logic, reducers, and components are grouped together.
-  </p>
+  return (
+    &lt;div className="row p-4"&gt;
+      &lt;div className="col-md-4"&gt;
+        &lt;Cart cart={cart} removeFromCart={removeFromCart} /&gt;
+      &lt;/div&gt;
+      &lt;div className="col-md-8"&gt;
+        &lt;div className="course-grid"&gt;
+          {fakeData.map(course =&gt; (
+            &lt;Course key={course.id} course={course} addToCart={addToCart} cart={cart} /&gt;
+          ))}
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
 
-  <pre>
-src/
-├── app/            # Redux store configuration
-├── features/       # Redux slices (business logic)
-├── components/     # UI components
-├── data/           # Mock data
-├── assets/         # Images & static files
-  </pre>
+export default CourseInfo;
+    </pre>
+  </section>
 
-  <div class="note">
-    This architecture makes the application easy to extend with authentication,
-    APIs, routing, and backend integration.
-  </div>
-</section>
+  <section>
+    <h2>6. App.jsx</h2>
+    <p>Main application wrapper. Concepts:</p>
+    <ul>
+      <li>Imports <code>CourseInfo</code> and logo.</li>
+      <li>Displays a top header section with the logo.</li>
+      <li>Renders <code>CourseInfo</code> to show courses and cart.</li>
+    </ul>
+    <pre>
+import "./App.css";
+import CourseInfo from "./Components/CourseInfo/CourseInfo";
+import logo from "./assets/logo.png";
 
-<!-- REDUX -->
-<section>
-  <h2>🧠 State Management Deep Dive</h2>
-  <p>
-    The cart state is centralized in Redux. Components subscribe to only the data
-    they need, ensuring predictable updates and better performance.
-  </p>
-
-  <h4>Why Redux instead of useState?</h4>
-  <ul>
-    <li>Eliminates prop drilling</li>
-    <li>Single source of truth</li>
-    <li>Easier debugging</li>
-    <li>Industry-standard pattern</li>
-  </ul>
-
-  <pre>
-const exists = state.items.find(
-  item => item.id === action.payload.id
-);
-
-if (!exists) {
-  state.items.push(action.payload);
+function App() {
+  return (
+    &lt;div className="container-fluid"&gt;
+      &lt;div className="text-center bg-info p-3"&gt;
+        &lt;img src={logo} alt="logo" className="logo" /&gt;
+        &lt;h2&gt;Online Learning Platform&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;CourseInfo /&gt;
+    &lt;/div&gt;
+  );
 }
-  </pre>
-</section>
 
-<!-- DATA FLOW -->
-<section>
-  <h2>🔁 Data Flow Explanation</h2>
-  <ol>
-    <li>User clicks Enroll</li>
-    <li>Redux action is dispatched</li>
-    <li>Reducer updates state</li>
-    <li>UI re-renders automatically</li>
-    <li>State is persisted to localStorage</li>
-  </ol>
-</section>
+export default App;
+    </pre>
+  </section>
 
-<!-- PERFORMANCE -->
-<section>
-  <h2>⚡ Performance Considerations</h2>
-  <ul>
-    <li>Derived data instead of duplicated state</li>
-    <li>Minimal re-renders using Redux selectors</li>
-    <li>No unnecessary API calls</li>
-    <li>Lightweight localStorage persistence</li>
-  </ul>
-</section>
+  <section>
+    <h2>7. index.jsx</h2>
+    <p>Entry point for React rendering. Concepts:</p>
+    <ul>
+      <li><code>createRoot</code> and <code>root.render</code> mount the React app on <code>#root</code>.</li>
+      <li><code>StrictMode</code> helps detect unsafe lifecycle methods and other warnings in development.</li>
+    </ul>
+    <pre>
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
 
-<!-- TESTING -->
-<section>
-  <h2>🧪 Testing Philosophy</h2>
-  <p>
-    The project uses React Testing Library to test user-facing behavior rather than
-    internal implementation details.
-  </p>
+const root = createRoot(document.getElementById('root'));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);
+    </pre>
+  </section>
 
-  <ul>
-    <li>UI renders correctly</li>
-    <li>Buttons are present and interactive</li>
-    <li>Core user flows are validated</li>
-  </ul>
-</section>
+  <section>
+    <h2>8. CSS (App.css & index.css)</h2>
+    <p>CSS styles include:</p>
+    <ul>
+      <li>Responsive grid layout for course cards.</li>
+      <li>Hover effects for buttons and cards.</li>
+      <li>Cart panel styling (dark theme).</li>
+      <li>Logo animations and styling.</li>
+      <li>Media queries for light/dark mode support.</li>
+      <li>Global font, colors, and spacing.</li>
+    </ul>
+  </section>
 
-<!-- FUTURE -->
-<section>
-  <h2>🚀 Scalability & Future Enhancements</h2>
-  <ul>
-    <li>React Router for multi-page navigation</li>
-    <li>User authentication & roles</li>
-    <li>Backend API integration</li>
-    <li>Payment gateway (Stripe / Razorpay)</li>
-    <li>Admin dashboard for course management</li>
-    <li>Dark mode & accessibility improvements</li>
-  </ul>
-</section>
+  <section>
+    <h2>9. Testing (Vitest + React Testing Library)</h2>
+    <p>Simple tests include:</p>
+    <ul>
+      <li>Checking if <code>CART</code> heading renders.</li>
+      <li>Checking if at least one course is displayed.</li>
+      <li>Checking if the Enroll button is rendered and clickable.</li>
+    </ul>
+  </section>
 
-<!-- AUTHOR -->
-<section>
-  <h2>👤 Author</h2>
-  <p><strong>Rohith Nidumolu</strong></p>
-  <p>
-    Frontend Developer specializing in React and modern JavaScript.
-    Focused on building scalable, maintainable, and production-ready applications.
-  </p>
-</section>
-
-</main>
-
-<footer>
-  © 2026 Online Learning Platform — Complete Technical Documentation
-</footer>
+  <section>
+    <h2>10. Key Concepts Used</h2>
+    <ul>
+      <li>React Components & Props</li>
+      <li>State Management with <code>useState</code></li>
+      <li>Conditional Rendering & Disabled Buttons</li>
+      <li>Array Methods: <code>map</code>, <code>some</code>, <code>reduce</code>, <code>filter</code></li>
+      <li>CSS Flexbox & Grid for layout</li>
+      <li>Responsive Design</li>
+      <li>Testing with Vitest & React Testing Library</li>
+      <li>ES6 Features: Destructuring, Arrow Functions, Template Literals</li>
+    </ul>
+  </section>
 
 </body>
 </html>
